@@ -3,22 +3,32 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String uid = '';
 
-  Future<void> signInAnonymously () async {
-    UserCredential userCredential = await _firebaseAuth.signInAnonymously();
-    String uid = _firebaseAuth.currentUser!.uid;
-    _firestore.collection('users').doc(uid).set({
-      'uid' : uid
-    });
+  setUid(theUid) {
+    uid = theUid;
   }
 
-  // Future<String> signIn() async {
-  //   UserCredential userCredential = await _firebaseAuth.signInAnonymously();
-  //   String uid = _firebaseAuth.currentUser!.uid;
-  //   return uid;
-  // }
+  Future<void> signInAnonymously() async {
+    UserCredential userCredential = await _firebaseAuth.signInAnonymously();
 
+    setUid(userCredential.user!.uid);
+
+    _firestore.collection('users').doc(uid);
+    // _firestore.collection('users').doc(uid).set({
+    //   'uid' : this.uid
+    // });
+  }
+
+  // Future<void> addtheUserToTheDatabase(GeneralUser gUser) async {
+  //   await _firestore
+  //       .collection('users')
+  //       .doc(gUser.uid)
+  //       .set(gUser.toMap(), SetOptions(merge: true));
+
+  //   setTheGUser(gUser);
+  // }
 
 }

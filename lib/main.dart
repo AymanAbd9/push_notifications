@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notifications_app/app.dart';
 import 'package:notifications_app/src/services/auth_service.dart';
-import 'package:notifications_app/src/services/firestore_service.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 

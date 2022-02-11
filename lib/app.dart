@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notifications_app/src/home_page.dart';
-import 'package:notifications_app/src/screens/register_screen.dart';
+import 'package:notifications_app/src/screens/home_page.dart';
+import 'package:notifications_app/src/screens/start_screen.dart';
 
 class AppView extends StatelessWidget {
   const AppView({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'attendance app',
-      home: HomePage(),
+      home: StartScreenView(),
 
       
     );
